@@ -199,19 +199,6 @@ namespace Otus.SubStrings.Logic
             return true;
         }
 
-        //private int GetSuffixLength(string mask, int suffixStartIndex)
-        //{
-        //    var length = 0;
-
-        //    for (int i = suffixStartIndex, j = mask.Length - 1;
-        //        i >= 0 && mask[i] == mask[j]; i--, j--)
-        //    {
-        //        length++;
-        //    }
-
-        //    return length;
-        //}
-
         private int GetSuffixLength(string mask, int suffixStartIndex)
         {
             var length = 0;
