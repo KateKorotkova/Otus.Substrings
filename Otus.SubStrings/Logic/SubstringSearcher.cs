@@ -13,12 +13,12 @@
                 if (leftCharactersInTextCount < mask.Length)
                     return UnExistedSubstringIndex;
 
-                var counter = 0;
+                var theSameCharactersCounter = 0;
                 for (var maskCounter = 0; maskCounter < mask.Length; maskCounter++)
                 {
                     if (text[textCounter + maskCounter] == mask[maskCounter])
                     {
-                        counter++;
+                        theSameCharactersCounter++;
                     }
                     else
                     {
@@ -26,7 +26,7 @@
                     }
                 }
 
-                if (counter == mask.Length)
+                if (theSameCharactersCounter == mask.Length)
                     return textCounter;
             }
 
