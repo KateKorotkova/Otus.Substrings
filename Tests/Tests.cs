@@ -12,7 +12,8 @@ namespace Tests
             new object[] { "strongstring", "string", 6 },
             new object[] { "strongstring", "strings", -1 },
             new object[] { "strst.strstring", "string", 9 },
-            new object[] { "abcd.fabcdeabcdef", "abcdef", 11 }
+            new object[] { "abcd.fabcdeabcdef", "abcdef", 11 },
+            new object[] { "aabc.abc..bc.abc.bc.c.abc", "bc.abc.bc.c.abc", 10 }
         };
 
 
@@ -42,6 +43,16 @@ namespace Tests
             var searcher = new SubstringSearcher();
 
             var result = searcher.GetIndexByShiftArray(text, mask);
+
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [TestCaseSource(nameof(_testCases))]
+        public void Can_Get_Index_By_Boyer_Moore_Algorithm(string text, string mask, int expectedResult)
+        {
+            var searcher = new SubstringSearcher();
+
+            var result = searcher.GetIndexByBoyerMooreAlgorithm(text, mask);
 
             Assert.That(result, Is.EqualTo(expectedResult));
         }
