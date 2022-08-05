@@ -1,4 +1,6 @@
-﻿namespace Otus.SubStrings.Logic
+﻿using System.Linq;
+
+namespace Otus.SubStrings.Logic
 {
     public class SubstringSearcher
     {
@@ -13,12 +15,12 @@
                 if (leftCharactersInTextCount < mask.Length)
                     return UnExistedSubstringIndex;
 
-                var theSameCharactersCounter = 0;
+                var theSameCharactersCount = 0;
                 for (var maskCounter = 0; maskCounter < mask.Length; maskCounter++)
                 {
                     if (text[textCounter + maskCounter] == mask[maskCounter])
                     {
-                        theSameCharactersCounter++;
+                        theSameCharactersCount++;
                     }
                     else
                     {
@@ -26,7 +28,43 @@
                     }
                 }
 
-                if (theSameCharactersCounter == mask.Length)
+                if (theSameCharactersCount == mask.Length)
+                    return textCounter;
+            }
+
+            return UnExistedSubstringIndex;
+        }
+
+        public int GetIndexByShiftScan(string text, string mask)
+        {
+            for (var textCounter = 0; textCounter < text.Length; textCounter++)
+            {
+                var leftCharactersInTextCount = text.Length - textCounter;
+                if (leftCharactersInTextCount < mask.Length)
+                    return UnExistedSubstringIndex;
+
+                var lastMaskCharacterIndex = mask.Length - 1;
+
+                if (!mask.Contains(text[textCounter + lastMaskCharacterIndex]))
+                {
+                    textCounter = textCounter + lastMaskCharacterIndex;
+                    continue;
+                }
+
+                var theSameCharactersCount = 0;
+                for (var maskCounter = lastMaskCharacterIndex; maskCounter >= 0; maskCounter--)
+                {
+                    if (text[textCounter + maskCounter] == mask[maskCounter])
+                    {
+                        theSameCharactersCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (theSameCharactersCount == mask.Length)
                     return textCounter;
             }
 

@@ -5,15 +5,34 @@ namespace Tests
 {
     public class Tests
     {
-        [TestCase("test", "es", ExpectedResult = 1)]
-        [TestCase("test", "abc", ExpectedResult = -1)]
-        [TestCase("strongstring", "string", ExpectedResult = 6)]
-        [TestCase("strongstring", "strings", ExpectedResult = -1)]
-        public int Can_Get_Index_By_Full_Scan(string text, string mask)
+        private static object[] _testCases =
+        {
+            new object[] { "test", "es", 1 },
+            new object[] { "test", "abc", -1 },
+            new object[] { "strongstring", "string", 6 },
+            new object[] { "strongstring", "strings", -1 },
+            new object[] { "strst.strstring", "string", 9 }
+        };
+
+
+        [TestCaseSource(nameof(_testCases))]
+        public void Can_Get_Index_By_Full_Scan(string text, string mask, int expectedResult)
         {
             var searcher = new SubstringSearcher();
 
-            return searcher.GetIndexByFullScan(text, mask);
+            var result = searcher.GetIndexByFullScan(text, mask);
+
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [TestCaseSource(nameof(_testCases))]
+        public void Can_Get_Index_By_Shift_Scan(string text, string mask, int expectedResult)
+        {
+            var searcher = new SubstringSearcher();
+
+            var result = searcher.GetIndexByShiftScan(text, mask);
+
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
     }
 }

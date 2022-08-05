@@ -2,5 +2,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8d276119_002Da6e7_002D4d7b_002D9a85_002D5d5c3dbeef83/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Can_Get_Index_By_Full_Scan" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DB879E54-4FB6-4AAA-9D28-9A2156A026D2::.NETCoreApp,Version=v3.1::Tests.Tests.Can_Get_Index_By_Full_Scan&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DB879E54-4FB6-4AAA-9D28-9A2156A026D2::.NETCoreApp,Version=v3.1::Tests.Tests.Can_Get_Index_By_Shift_Scan&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
